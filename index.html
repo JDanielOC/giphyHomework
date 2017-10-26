@@ -11,30 +11,29 @@
 <body>
     <div class="container">
         <container>
+            <!-- Top Row to hold initial buttons and all appended buttons -->
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Buttons Go Here -->
-                    <button data-outdoors="theGreatOutdoors">The Outdoors</button>
-                    <!-- Rendered buttons will get dumped here  -->
-                    <div id="buttons-view"></div>
+                    <div id="buttonsView"></div>
                 </div>
             </div>
             <div class="row">
                 <!-- Left Panel for gifs -->
                 <div class="col-sm-8">
                     <div class="panel">
-                        <p>GIFs</p>
+                        <div id="giphyView"></div>
                     </div>
                 </div>
                 <!-- Right Panel for input form -->
                 <div class="col-sm-4">
                     <div class="panel">
-                        <form id="outdoors-form">
-                            <label for="outdoors-input">The Mountains are calling</label>
-                            <input type="text" id="outdoors-input">
+                        <form id="outdoorsForm">
+                            <label for="outdoorsInput">The Mountains are calling</label>
+                            <input type="text" id="outdoorsInput">
                             <br>
-                            <!-- Button triggers new movie to be added -->
-                            <input id="add-outdoors" type="submit" value="and I must go.">
+                            <!-- Button triggers new gif to be added -->
+                            <input id="addOutdoors" type="submit" value="and I must go.">
                         </form>
                     </div>
                 </div>
@@ -42,42 +41,10 @@
         </container>
         <!-- jQuery script -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-
-        // array of outdoorsy type stuff
-      var topics = ["johnmuir", "nationalparks", "hiking", "rei"];
-
-        $("button").on("click", function() {
-            var outdoors = $(this).attr("data-outdoors");
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                outdoors + "&api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&limit=10";
-
-            console.log(outdoors);
-
-
-            // To Do:    write a loop that appends a button for each index in the array.
-            // when the button is clicked I should get 10 gifs (nonanimated)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        });
+        <!-- JavaScript -->
+        <script src="./assets/javascript/giphyhw.js">
         </script>
     </div>
 </body>
 
 </html>
-
-
