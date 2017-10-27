@@ -1,5 +1,5 @@
 // array of outdoorsy type stuff
-var topics = ["yes", "thumbs up", "when", "maybe", "unsure", "no", "sorry", "never","as+if", "awkard", "just kidding"];
+var topics = ["yes", "thumbs up", "when", "maybe", "unsure", "no", "sorry", "never", "as+if", "awkard", "just kidding"];
 
 
 // display function re-renders the HTML to display the appropriate content
@@ -7,7 +7,7 @@ function displayGifs() {
 
     var topic = $(this).attr("dataName");
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&limit=10&q=" + topic;
-    console.log(queryURL);
+    // console.log(queryURL);
 
     $.ajax({
             url: queryURL,
@@ -19,17 +19,18 @@ function displayGifs() {
 
             for (var i = 0; i < results.length; i++) {
                 var giphyDiv = $("<div class='item'>");
-                console.log(giphyDiv);
-
-                //     var rating = results[i].rating;
-
-                //     var p = $("<p>").text("Rating: " + rating);
+                // console.log(giphyDiv);
 
                 var gifImage = $("<img>");
                 gifImage.attr("src", results[i].images.fixed_height.url);
-                gifImage.attr("style", "height: 200px")
+                gifImage.attr("style", "height: 200px");
+                gifImage.attr("data-state", "still");
 
-                //     giphyDiv.prepend(p);
+                var rating = results[i].rating;
+                var p = $("<p>").text("Rating: " + rating);
+
+
+                giphyDiv.prepend(p);
                 giphyDiv.prepend(gifImage);
 
                 $("#giphyView").prepend(giphyDiv);
@@ -68,13 +69,21 @@ $("button").on("click", function() {
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         answer + "&api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&limit=10";
 
-    console.log(answer);
+    // console.log(answer);
 
 
-    // To Do:    write a loop that appends a button for each index in the array.
-    // when the button is clicked I should get 10 gifs (nonanimated)
 
+      // This function handles events where the add ANSWER button is clicked
+      $("#addAnswer").on("click", function(event) {
+        event.preventDefault();
+        // This line of code will grab the input from the textbox
+        var topic = $("#answerMeInput").val().trim();
 
+        // The ANSWER from the textbox is then added to our array
+        topics.push(topic);
+
+        // Calling renderButtons which handles the processing of our ANSWER array
+        makeButtons();
 
 });
 
@@ -82,3 +91,5 @@ $("button").on("click", function() {
 $(document).on("click", ".topic", displayGifs);
 
 makeButtons();
+
+
