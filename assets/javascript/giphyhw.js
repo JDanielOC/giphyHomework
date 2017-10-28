@@ -9,7 +9,7 @@ $(document).ready(function() {
 
         var topic = $(this).attr("dataName");
         var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&limit=10&q=" + topic;
-        // console.log(queryURL);
+        console.log(queryURL);
 
         $.ajax({
                 url: queryURL,
@@ -19,44 +19,59 @@ $(document).ready(function() {
 
                 var results = response.data;
 
+                $("#giphyView").empty();
+
                 for (var i = 0; i < results.length; i++) {
                     var giphyDiv = $("<div class='item'>");
                     // console.log(giphyDiv);
 
                     var gifImage = $("<img>");
                     gifImage.attr("src", results[i].images.fixed_height_still.url);
-                    gifImage.attr({'data-animate' : results[i].images.fixed_height.url});
-                    gifImage.attr({'data-state' : "still"});
-                    gifImage.attr({'data-still' : results[i].images.fixed_height_still.url});
-                    // gifImage.attr("style", "height: 200px");
-                    // gifImage.attr("data-state", "still");
+                    gifImage.attr({ "data-animate": results[i].images.fixed_height.url });
+                    gifImage.attr({ "data-still": results[i].images.fixed_height_still.url });
+                    gifImage.attr({ "data-state": "still" });
+                    gifImage.attr({ "class": "gif" });
 
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
 
-
                     giphyDiv.prepend(p);
                     giphyDiv.prepend(gifImage);
-
-
 
                     $("#giphyView").prepend(giphyDiv);
 
                 }
             });
-
     }
-
 
     // Function that listens to on click for gifs and plays/pauses the gifs
 
-    $(".item").on("click", function() {
+    $(".gif").on("click", function() {
 
-        var state = $(this).attr('data-state');
+        //         var state = $(this).attr("data-state");
+        // console.log(state);
 
+        //       if(state === 'still'){
+
+
+        //   $(this).attr("src",$(this).attr("data-animate"));
+        //   $(this).attr("data-state", "animate");
+
+
+        // } 
+
+        //   else if(state === 'animate') {
+
+        //   $(this).attr("src",$(this).attr("data-still"));
+        //   $(this).attr("data-state", "still");
+
+        // }
+
+        var state = $(this).attr("data-state");
+        console.log(state);
 
         if (state === "still") {
-            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
         } else {
             $(this).attr("src", $(this).attr("data-still"));
