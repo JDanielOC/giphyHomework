@@ -24,9 +24,12 @@ $(document).ready(function() {
                     // console.log(giphyDiv);
 
                     var gifImage = $("<img>");
-                    gifImage.attr("src", results[i].images.fixed_height.url);
-                    gifImage.attr("style", "height: 200px");
-                    gifImage.attr("data-state", "still");
+                    gifImage.attr("src", results[i].images.fixed_height_still.url);
+                    gifImage.attr({'data-animate' : results[i].images.fixed_height.url});
+                    gifImage.attr({'data-state' : "still"});
+                    gifImage.attr({'data-still' : results[i].images.fixed_height_still.url});
+                    // gifImage.attr("style", "height: 200px");
+                    // gifImage.attr("data-state", "still");
 
                     var rating = results[i].rating;
                     var p = $("<p>").text("Rating: " + rating);
@@ -35,12 +38,31 @@ $(document).ready(function() {
                     giphyDiv.prepend(p);
                     giphyDiv.prepend(gifImage);
 
+
+
                     $("#giphyView").prepend(giphyDiv);
 
                 }
             });
 
     }
+
+
+    // Function that listens to on click for gifs and plays/pauses the gifs
+
+    $(".item").on("click", function() {
+
+        var state = $(this).attr('data-state');
+
+
+        if (state === "still") {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "animate");
+        } else {
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
+        }
+    });
 
     // Function for displaying buttons
     function makeButtons() {
