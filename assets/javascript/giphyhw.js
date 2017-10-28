@@ -8,7 +8,7 @@ $(document).ready(function() {
     function displayGifs() {
 
         var topic = $(this).attr("dataName");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&limit=10&q=" + topic;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&offset=13&limit=10&q=" + topic;
         console.log(queryURL);
 
         $.ajax({
@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     // Function that listens to on click for gifs and plays/pauses the gifs
 
-    $(".gif").on("click", function() {
+    $(".item").on("click", function() {
 
         //         var state = $(this).attr("data-state");
         // console.log(state);
