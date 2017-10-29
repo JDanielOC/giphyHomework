@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // array of outdoorsy type stuff
-    var topics = ["yes", "thumbs-up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just-kidding"];
+    var topics = ["yes", "thumbs-up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkward", "just-kidding"];
 
 
     // function to display the gifs as called
