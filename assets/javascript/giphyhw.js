@@ -4,7 +4,7 @@ $(document).ready(function() {
     var topics = ["yes", "thumbs-up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just-kidding"];
 
 
-    // display function re-renders the HTML to display the appropriate content
+    // function to display the gifs as called
     function displayGifs() {
 
         var topic = $(this).attr("dataName");
@@ -33,11 +33,11 @@ $(document).ready(function() {
                     gifImage.attr({ "class": "gif" });
 
                     var rating = results[i].rating;
-                    var p = $("<p>").text("Rating: " + rating);
+                    var p = $("<p id='ratingId'>").text("Rating: " + rating);
 
-                    giphyDiv.prepend(p);
                     giphyDiv.prepend(gifImage);
-
+                    giphyDiv.prepend(p);
+                    
                     $("#giphyView").prepend(giphyDiv);
 
                 }
@@ -89,12 +89,11 @@ $(document).ready(function() {
     $("#addAnswer").on("click", function(event) {
         event.preventDefault();
         // "var topic" grabs the input from the text box
-        var topic = $("#answerMeInput").val().trim().replace(/\s+/g, '-');
+        var topic = $("#answerMeInput").val().trim().replace(/\s+/g, '+');
 
-        // The ANSWER from the textbox is then added to our array
-        topics.push(topic);
+        // The input from the form is pushed to the array
+                topics.push(topic);
 
-        // Calling renderButtons which handles the processing of our ANSWER array
         makeButtons();
 
     });

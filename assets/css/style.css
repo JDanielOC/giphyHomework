@@ -1,3 +1,16 @@
+body {
+	background-color: #c6bbf9;
+	min-height: 100%;
+}
+
+#buttonsRow {
+	background-color: #e08df4;
+}
+
+.panel {
+	border: 0;
+}
+
 .btn {
 	margin: 5px;
 }
@@ -5,5 +18,21 @@
 
 .item {
 	float: left;
-	margin-right: 5px;
+	margin: 10px;
+	background-color: #d9d1fc;
+}
+
+.form-area {
+	display: inline-block;
+	background-color: #d9d1fc;
+	width: 100%;
+	padding: 10px 20px 20px;
+	margin: 10px 0px 30px;
+	border: 1px solid GREY;
+}
+
+#ratingId {
+	width: 100%;
+	margin: auto;
+	padding-left: 10px;
 }
