@@ -1,14 +1,14 @@
 $(document).ready(function() {
 
     // array of outdoorsy type stuff
-    var topics = ["yes", "thumbs+up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just kidding"];
+    var topics = ["yes", "thumbs-up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just-kidding"];
 
 
     // display function re-renders the HTML to display the appropriate content
     function displayGifs() {
 
         var topic = $(this).attr("dataName");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&offset=13&limit=10&q=" + topic;
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&offset=10&limit=10&q=" + topic;
         console.log(queryURL);
 
         $.ajax({
@@ -89,7 +89,7 @@ $(document).ready(function() {
     $("#addAnswer").on("click", function(event) {
         event.preventDefault();
         // "var topic" grabs the input from the text box
-        var topic = $("#answerMeInput").val().trim();
+        var topic = $("#answerMeInput").val().trim().replace(/\s+/g, '-');
 
         // The ANSWER from the textbox is then added to our array
         topics.push(topic);
