@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     // array of outdoorsy type stuff
-    var topics = ["yes", "thumbs up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just kidding"];
+    var topics = ["yes", "thumbs+up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkard", "just kidding"];
 
 
     // display function re-renders the HTML to display the appropriate content
@@ -44,28 +44,12 @@ $(document).ready(function() {
             });
     }
 
-    // Function that listens to on click for gifs and plays/pauses the gifs
+    // Listen for an on-click for gifs with a class of "item" and plays/pauses the gif
 
-    $(".item").on("click", function() {
+    $(document).on("click", ".gif", function() {
 
-        //         var state = $(this).attr("data-state");
-        // console.log(state);
+        console.log("gifClassHasBeenClicked");
 
-        //       if(state === 'still'){
-
-
-        //   $(this).attr("src",$(this).attr("data-animate"));
-        //   $(this).attr("data-state", "animate");
-
-
-        // } 
-
-        //   else if(state === 'animate') {
-
-        //   $(this).attr("src",$(this).attr("data-still"));
-        //   $(this).attr("data-state", "still");
-
-        // }
 
         var state = $(this).attr("data-state");
         console.log(state);
@@ -88,7 +72,7 @@ $(document).ready(function() {
         // Loops through the array of topics
         for (var i = 0; i < topics.length; i++) {
 
-            var a = $("<button type='button' class='btn btn-primary btn-sm'>" + " ");
+            var a = $("<button type='button' class='btn btn-primary btn-sm'>");
             // Adds a class of topic to our button
             a.addClass("topic");
             // Added a data-attribute
@@ -101,10 +85,10 @@ $(document).ready(function() {
     };
 
 
-    // This function handles events where the addANSWER button is clicked
+    // This function handles events where the addAnswer button is clicked
     $("#addAnswer").on("click", function(event) {
         event.preventDefault();
-        // This line of code will grab the input from the textbox
+        // "var topic" grabs the input from the text box
         var topic = $("#answerMeInput").val().trim();
 
         // The ANSWER from the textbox is then added to our array
