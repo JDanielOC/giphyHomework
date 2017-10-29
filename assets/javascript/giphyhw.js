@@ -1,15 +1,18 @@
 $(document).ready(function() {
 
     // array of outdoorsy type stuff
-    var topics = ["yes", "thumbs-up", "when", "maybe", "unsure", "no", "sorry", "never", "as if", "awkward", "just-kidding"];
+    var topics = ["yes", "thumbs-up", "when", "maybe", "dunno", "no", "sorry", "never", "as+if", "awkward", "just-kidding"];
 
 
     // function to display the gifs as called
     function displayGifs() {
 
         var topic = $(this).attr("dataName");
-        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&offset=10&limit=10&q=" + topic;
+        var offset = Math.floor(Math.random()*100);
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=ps3TxsPX4Szs6sxUyhXQtD22q2g2IRVc&offset=" + offset + "&limit=10&q=" + topic;
         console.log(queryURL);
+
+        
 
         $.ajax({
                 url: queryURL,
